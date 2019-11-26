@@ -12,5 +12,5 @@ export {
     PetList,
     Pet,
     Filters,
-    Search
+    Search,
 }

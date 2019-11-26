@@ -1,15 +1,16 @@
 import React from 'react';
-
+import {Link} from "react-router-dom"
 
 function Pet(props) {
-    const {name, image, age, description, breed} = props;
+    const {name, image, age, description, breed,id} = props;
     return (
         <div className="col-lg-6 col-md-4 mb-4">
+            <Link className="goDetails" to={`/details/${id}`}>
             <div className="card h-100">
-                <a href="#"><img className="card-img-top" src={image} alt="" style={{height: "292px"}}/></a>
+                <img className="card-img-top" src={image} alt="" style={{height: "292px"}}/>
                 <div className="card-body">
                     <h4 className="card-title">
-                        <a href="#">{name}</a>
+                        <p>{name}</p>
                         <div>
                             <span className="badge badge-primary" style={{fontSize: "12px"}}>{breed}</span>
                         </div>
@@ -25,6 +26,7 @@ function Pet(props) {
                     <div className="btn btn-success">Favorilere Ekle</div>
                 </div>
             </div>
+            </Link>
         </div>
     );
 }

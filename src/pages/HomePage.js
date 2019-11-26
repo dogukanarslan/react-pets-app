@@ -1,7 +1,6 @@
 import React from 'react';
 import {Sidebar, PetList} from "../components";
 
-
 class HomePage extends React.Component{
     constructor(props){
         super(props);

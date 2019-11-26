@@ -3,7 +3,6 @@ import {breedOptions} from "../constants";
 import classNames from "classnames";
 
 function Filters(props) {
-    console.log(props.activeFilter);
     return (
         <div>
             <h4 className="my-4 text-left">Cins</h4>
