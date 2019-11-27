@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom"
+let age,name,image, breed,description
 class DetailsPage extends React.Component{
   constructor(props){
     super(props)
@@ -13,11 +14,15 @@ class DetailsPage extends React.Component{
     }
   }
 
+
+
   componentDidMount(){
     axios.get(`http://5dd7af92505c590014d3b4ac.mockapi.io/pets/${this.props.match.params.id}`)
       .then(resp => resp.data)
-      .then(data => this.setState({name: data.name,age: data.age,image: data.image, breed: data.breed,description: data.description}))
+      .then(data => ({name,age,image, breed,description} = data))
+      .then(data => this.setState({name, age, image, breed, description}))
     }
+
 
 
     render(){

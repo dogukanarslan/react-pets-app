@@ -17,13 +17,14 @@ class PetList extends React.Component{
     }
 
     componentDidMount() {
-        getPets().then((data) => {
-            this.setState({
-                _pets: data,
-                pets: data,
-                yukleniyor: false,
-            })
+      window.addEventListener("scroll",this.scrollToLoad,false);
+      getPets().then((data) => {
+      this.setState({
+        _pets: data,
+        pets: data,
+        yukleniyor: false,
         })
+      })
     }
 
     componentDidUpdate(prevProps) {
@@ -33,6 +34,10 @@ class PetList extends React.Component{
         if(prevProps.searchValue !== this.props.searchValue){
             this.filterPets();
         }
+    }
+
+    componentWillUnmount(){
+      window.removeEventListener("scroll",this.scrollToLoad,false);
     }
 
     filterPets = () => {
@@ -69,7 +74,6 @@ class PetList extends React.Component{
 
 
     render(){
-        window.onscroll = this.scrollToLoad;
         const Yukleniyor = <div>Yukleniyor</div>;
         const EmptyPets = <div>Bulunamadı</div>;
         const petsShowing = this.state.pets.slice(0,this.state.index);
